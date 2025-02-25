@@ -40,8 +40,9 @@ export default function Page() {
   const [ loading, setLoading ] = useState(true);
   
   useEffect(() => {
-    const timeElement = document.querySelector('.time');
+    
     const today = new Date();
+   
     const fetchData = async () => {
       try {
         const response = await fetch(`https://api.myquran.com/v2/sholat/jadwal/1638/${today.getFullYear()}/${today.getMonth() + 1}/${today.getDate()}`);
@@ -58,6 +59,7 @@ export default function Page() {
       }
     }
     const clock = () => {
+      const timeElement = document.querySelector('.time');
       const today = new Date();
       const hours = today.getHours();
       const minutes = today.getMinutes();
@@ -69,7 +71,7 @@ export default function Page() {
       setTimeout(clock, 1000)
     }
     fetchData();
-    clock()
+    clock();
   }, [])
   
 
